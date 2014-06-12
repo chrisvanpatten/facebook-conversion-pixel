@@ -9,7 +9,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
  == Description ==
-Insert Facebook Conversion Pixel code into to Posts, Pages, or any other post types.
+Insert Facebook Conversion Pixel code into to Posts, Pages, or any other post types. Conversion tracking helps businesses measure the return on investment of their Facebook Ads by reporting on the actions people take after the ads are served.
 
 This plugin does what the "Facebook Pixel Conversions for WordPress" plugin on the WordPress Plugin Directory does, but it adds these enhancements:
 
