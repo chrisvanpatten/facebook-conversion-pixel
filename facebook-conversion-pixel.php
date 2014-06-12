@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Facebook Conversion Pixel
-Plugin URI: n/a
+Plugin URI: https://github.com/kellenmace/facebook-conversion-pixel
 Description: Add Facebook Conversion Pixels to Posts, Pages, or any other custom post types.
 Version: 1.0
 Author: Kellen Mace
@@ -36,11 +36,18 @@ if ( ! is_admin() ) {
 	add_action( 'wp_head', 'fb_pxl_head' );
 }
 
-/**
- * Display meta box in admin
- * @since  0.1.0
- */
+
 if ( is_admin() ) {
+	/**
+	 * Include plugin options page
+	 * @since  0.1.0
+	 */
+	include_once( plugin_dir_path( __FILE__ ) . 'includes/admin.php' );
+
+	/**
+	 * Display meta box in admin
+	 * @since  0.1.0
+	 */
 	function fb_pxl_meta( array $meta_boxes ) {
 		$prefix = 'fb_pxl_';
 		$options = get_option( 'fb_pxl_options' );
@@ -99,11 +106,5 @@ if ( is_admin() ) {
 		return $links;
 	}
 	add_filter( "plugin_action_links", 'fb_pxl_plugin_action_links', 10, 4 );
-
-	/**
-	 * Include plugin options page
-	 * @since  0.1.0
-	 */
-	include_once( plugin_dir_path( __FILE__ ) . 'includes/admin.php' );
 }
 ?>
