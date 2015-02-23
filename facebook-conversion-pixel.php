@@ -3,7 +3,7 @@
 Plugin Name: Facebook Conversion Pixel
 Plugin URI: https://github.com/kellenmace/facebook-conversion-pixel
 Description: Facebook's recommended plugin for adding Facebook Conversion Pixel code to WordPress sites.
-Version: 1.1
+Version: 1.2
 Author: Kellen Mace
 Author URI: http://kellenmace.com/
 License: GPLv2 or later
@@ -42,53 +42,53 @@ elseif ( is_admin() ) {
 	include_once( plugin_dir_path( __FILE__ ) . 'includes/admin.php' );
 
 	/**
+	 * Include Custom Metaboxes and Fields Library
+	 * @since 1.2
+	 */
+	if ( file_exists(  __DIR__ . '/includes/cmb2/init.php' ) ) {
+	  require_once  __DIR__ . '/includes/cmb2/init.php';
+	}
+
+	/**
 	 * Display meta box in admin
 	 * @since 1.1
 	 */
-	function fb_pxl_meta( array $meta_boxes ) {
+	function fb_pxl_display_meta_box() {
 		$prefix = 'fb_pxl_';
+
 		$options = get_option( 'fb_pxl_options' );
-		$pages = array();
-		foreach ( $options as $option_key => $option_value ) {
-			if ( 'on' == $option_value )
-				array_push( $pages, $option_key );
+		$post_types = array();
+		foreach ( $options as $post_type => $checkbox ) {
+			if ( 'on' == $checkbox )
+				array_push( $post_types, $post_type );
 		}
 
-		$meta_boxes[] = array(
-			'id'         => 'fb_pxl_metabox',
-			'title'      => 'Facebook Conversion Pixel Code',
-			'pages'      => $pages,
-			'context'    => 'normal',
-			'priority'   => 'high',
-			'show_names' => true,
-			'fields'     => array(     
-				array(
-					'name' => 'Insert Code',
-					'desc' => 'Insert Facebook Conversion Pixel code',
-					'id'   => $prefix . 'checkbox',
-					'type' => 'checkbox',
-				),
-				array(
-					'name' => 'Conversion Pixel JavaScript',
-					'desc' => 'Paste your Facebook Conversion Pixel code here',
-					'id'   => $prefix . 'conversion_code',
-					'type' => 'textarea_code',
-				),
-			),
-		);
-		return $meta_boxes;
-	}
-	add_filter( 'cmb_meta_boxes', 'fb_pxl_meta' );
+		$metabox = new_cmb2_box( array(
+			'id'            => $prefix . 'metabox',
+			'title'         => 'Facebook Conversion Pixel Code',
+			'object_types'  => $post_types,
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => true, // Show field names on the left
+			// 'cmb_styles' => false, // false to disable the CMB stylesheet
+			// 'closed'     => true, // true to keep the metabox closed by default
+		) );
 
-	/**
-	 * Include Custom Metaboxes and Fields Library
-	 * @since 1.0
-	 */
-	function fb_pxl_init_mtbxs() {
-		if ( ! class_exists( 'cmb_Meta_Box' ) )
-			require_once( plugin_dir_path( __FILE__ ) . 'includes/init.php' );
+		$metabox->add_field( array(
+			'name' => 'Insert Code',
+			'desc' => 'Insert Facebook Conversion Pixel code',
+			'id'   => $prefix . 'checkbox',
+			'type' => 'checkbox',
+		) );
+
+		$metabox->add_field( array(
+			'name' => 'Conversion Pixel JavaScript',
+			'desc' => 'Paste your Facebook Conversion Pixel code here',
+			'id'   => $prefix . 'conversion_code',
+			'type' => 'textarea_code',
+		) );
 	}
-	add_action( 'init', 'fb_pxl_init_mtbxs', 9999 );
+	add_filter( 'cmb2_init', 'fb_pxl_display_meta_box' );
 	
 	/**
 	 * Display settings link on WP plugin page

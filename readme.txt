@@ -3,8 +3,8 @@ Contributors: kellenmace
 Donate link: n/a
 Tags: facebook, conversion, pixel, facebook pixel, facebook conversion, conversion pixel, code, add, insert
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.1
+Tested up to: 4.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,7 @@ Click <a href="https://www.facebook.com/ads/manage">Here</a> and make sure you a
 
 = How do I insert the Facebook Conversion Pixel code on a certain page or post? =
 
-In the WordPress Admin Dashboard, begin editing the Post, Page, or other post type that you want to change. Toward the bottom of the editor page, you'll see a "Facebook Pixel Conversion Code" box. Paste your Facebook Conversion Pixel JavaScript code into the box, make sure the "Insert Code" checkbox is checked, then save the post/page. Your code will now be inserted into that post/page every time it is loaded.
+In the WordPress Admin Dashboard, begin editing the Post, Page, or other post type that you want to change. Toward the bottom of the editor page, you'll see a "Facebook Conversion Pixel Code" box. Paste your Facebook Conversion Pixel JavaScript code into the box, make sure the "Insert Code" checkbox is checked, then save the post/page. Your code will now be inserted into that post/page every time it is loaded.
 
 = How do I show/hide the Facebook Conversion Pixel field on certain post types? =
 
@@ -56,6 +56,9 @@ To verify that the pixel is working correctly, test it by navigating to the web 
 = 1.1 =
 * Changed plugin so that the conversion pixel field does not appear on newly added post types until the user chooses to enable the plugin for them.
 * Excluded Revision and Navigation Menu post types from the plugin options page
+
+= 1.2 =
+* Updated plugin to use new CMB2 version of Custom Metaboxes and Fields
 
 == Screenshots ==
 1. Paste in your Facebook Conversion Pixel code and check the Insert Code checkbox to insert it.
