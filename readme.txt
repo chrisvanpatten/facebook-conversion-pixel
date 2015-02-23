@@ -1,26 +1,30 @@
 === Facebook Conversion Pixel ===
-Contributors: kellenmace, vincentastolfi
+Contributors: kellenmace
 Donate link: n/a
 Tags: facebook, conversion, pixel, facebook pixel, facebook conversion, conversion pixel, code, add, insert
 Requires at least: 3.0
-Tested up to: 3.9.1
-Stable tag: 1.0
+Tested up to: 4.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
  == Description ==
-Insert Facebook Conversion Pixel code into to Posts, Pages, or any other post types. Conversion tracking helps businesses measure the return on investment of their Facebook Ads by reporting on the actions people take after the ads are served.
+Facebook's [recommended plugin](https://www.facebook.com/help/328988437301229 "Facebook Ads Troubleshooting") for inserting Facebook Conversion Pixel code into Posts, Pages, or any other post types. Conversion tracking helps businesses measure the return on investment of their Facebook Ads by reporting on the actions people take after the ads are served.
 
-This plugin does what the "Facebook Pixel Conversions for WordPress" plugin on the WordPress Plugin Directory does, but it adds these enhancements:
+This brief video shows how to use this plugin to easily insert conversion pixel code into the pages of your site:
+[youtube https://www.youtube.com/watch?v=iTUO35AUnKg]
+
+Features:
 
 - Supports inserting Facebook Conversion Pixel codes into Posts, Pages, and all other custom post types that you may have on your site
 
-- Provides a plugin options page where you can choose to enable the plugin for certain post types, and disable it for others. For instace, you could choose to have the Facebook Conversion Pixel box appear when editing any of your Posts, but never appear when you're editing Pages, or vice versa.
+- Provides a plugin options page where you can choose to enable the plugin for certain post types, and disable it for others. For example, you could choose to have the Facebook Conversion Pixel box appear when editing any of your Posts, but never appear when you're editing Pages, or vice versa.
 
  == Installation ==
 1. Download the plugin
-2. Upload to "/wp-content/plugins" folder or upload through WordPress interface
+2. Upload to "/wp-content/plugins" folder or install through WordPress Admin Dashboard
 3. Activate the Plugin
+4. Go to Settings > Facebook Conversion Pixel and check the boxes to enable/disable the plugin for each of your post types, then save your settings
 
 == Frequently Asked Questions ==
 
@@ -32,19 +36,28 @@ Click <a href="https://www.facebook.com/ads/manage">Here</a> and make sure you a
 
 In the WordPress Admin Dashboard, begin editing the Post, Page, or other post type that you want to change. Toward the bottom of the editor page, you'll see a "Facebook Pixel Conversion Code" box. Paste your Facebook Conversion Pixel JavaScript code into the box, make sure the "Insert Code" checkbox is checked, then save the post/page. Your code will now be inserted into that post/page every time it is loaded.
 
-= How do I hide the Facebook Conversion Pixel field on certain post types? =
+= How do I show/hide the Facebook Conversion Pixel field on certain post types? =
 
-From the WordPress Admin Dashboard, go to Settings > Facebook Conversion Pixel. Check the boxes next to Page, Post, or any other post type for which you'd like to disable the plugin.
+From the WordPress Admin Dashboard, go to Settings > Facebook Conversion Pixel and check the boxes to enable/disable the plugin for each of your post types, and save your settings. Only enable the post types on which you need to insert conversion pixel code, and leave the rest unchecked.
+
+= I have enabled the correct post type, but I still don't see the the Facebook Conversion Pixel field. Why? =
+
+When editing a post or page, click the Screen Options button in the upper-right corner of the page, and make sure "Facebook Conversion Pixel Code" is checked. If it isn't, then the plugin's fields won't be visible.
+
+= How can I tell if it's working? =
+
+To verify that the pixel is working correctly, test it by navigating to the web page you put the pixel on. If it's working, the pixel will send that information back to Facebook, and you'll be able to view it in your Ads Manager.
 
 == Changelog ==
 
-= 0.1 =
+= 1.0 =
 * Initial release
+
+= 1.1 =
+* Changed plugin so that the conversion pixel field does not appear on newly added post types until the user chooses to enable the plugin for them.
+* Excluded Revision and Navigation Menu post types from the plugin options page
 
 == Screenshots ==
 1. Paste in your Facebook Conversion Pixel code and check the Insert Code checkbox to insert it.
 
-2. Disable the plugin on Page, Post, or any other post type if desired on the plugin options page.
-
-== Notes ==
-Based on Vincent Astolfi's (http://www.nueue.net/) "Facebook Pixel Conversions for WordPress" plugin.
+2. Enable/disable the plugin on Page, Post, or any other post type as desired on the plugin options page.
