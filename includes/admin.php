@@ -1,7 +1,7 @@
 <?php
 /**
  * Facebook Conversion Pixel Options
- * @version 1.0
+ * @version 1.2
  */
 class Fb_Pxl_Admin {
  
@@ -19,7 +19,7 @@ class Fb_Pxl_Admin {
  
 	/**
 	 * Constructor
-	 * @since 0.1.0
+	 * @since 1.0
 	 */
 	public function __construct() {
 		// Set our title
@@ -29,7 +29,7 @@ class Fb_Pxl_Admin {
  
 	/**
 	 * Initiate hooks
-	 * @since 0.1.0
+	 * @since 1.0
 	 */
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'init' ) );
@@ -39,7 +39,7 @@ class Fb_Pxl_Admin {
  
 	/**
 	 * Register setting to WP
-	 * @since  0.1.0
+	 * @since  1.0
 	 */
 	public function init() {
 		register_setting( self::$key, self::$key );
@@ -47,7 +47,7 @@ class Fb_Pxl_Admin {
 
 	/**
 	 * Update Options Array
-	 * @since  0.1.0
+	 * @since  1.0
 	 */
 	public function update_options() {
 		$options = get_option( 'fb_pxl_options' );
@@ -76,7 +76,7 @@ class Fb_Pxl_Admin {
  
 	/**
 	 * Add menu options page
-	 * @since 0.1.0
+	 * @since 1.0
 	 */
 	public function add_options_page() {
 		$this->options_page = add_options_page( $this->title, $this->title, 'manage_options', self::$key, array( $this, 'admin_page_display' ) );
@@ -84,7 +84,7 @@ class Fb_Pxl_Admin {
  
 	/**
 	 * Admin page markup
-	 * @since  0.1.0
+	 * @since  1.0
 	 */
 	public function admin_page_display() {
 		$this->admin_page_setup();
@@ -102,7 +102,7 @@ class Fb_Pxl_Admin {
 
 	/**
 	 * Defines the plugin option page sections and fields
-	 * @since  0.1.0
+	 * @since  1.0
 	 * @return array
 	 */
 	public function admin_page_setup() {
@@ -131,7 +131,7 @@ class Fb_Pxl_Admin {
 
     /**
 	 * Display settings field values
-	 * @since  0.1.0
+	 * @since  1.0
 	 */
 	public function fb_pxl_display_on_output( $args ) {
 		$option_key = $args[ 0 ];
@@ -143,6 +143,6 @@ class Fb_Pxl_Admin {
  
 /**
  * Get the party started
- * @since  0.1.0
+ * @since  1.0
  */
 $Fb_Pxl_Admin = new Fb_Pxl_Admin();

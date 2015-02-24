@@ -51,7 +51,7 @@ elseif ( is_admin() ) {
 
 	/**
 	 * Display meta box in admin
-	 * @since 1.1
+	 * @since 1.2
 	 */
 	function fb_pxl_display_meta_box() {
 		$prefix = 'fb_pxl_';
@@ -69,20 +69,18 @@ elseif ( is_admin() ) {
 			'object_types'  => $post_types,
 			'context'       => 'normal',
 			'priority'      => 'high',
-			'show_names'    => true, // Show field names on the left
-			// 'cmb_styles' => false, // false to disable the CMB stylesheet
-			// 'closed'     => true, // true to keep the metabox closed by default
+			'show_names'    => true,
 		) );
 
 		$metabox->add_field( array(
 			'name' => 'Insert Code',
-			'desc' => 'Insert Facebook Conversion Pixel code',
+			'desc' => 'Insert Facebook Conversion Pixel code on this page',
 			'id'   => $prefix . 'checkbox',
 			'type' => 'checkbox',
 		) );
 
 		$metabox->add_field( array(
-			'name' => 'Conversion Pixel JavaScript',
+			'name' => 'Conversion Pixel',
 			'desc' => 'Paste your Facebook Conversion Pixel code here',
 			'id'   => $prefix . 'conversion_code',
 			'type' => 'textarea_code',
