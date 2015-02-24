@@ -65,7 +65,7 @@ elseif ( is_admin() ) {
 
 		$metabox = new_cmb2_box( array(
 			'id'            => $prefix . 'metabox',
-			'title'         => 'Facebook Conversion Pixel Code',
+			'title'         => 'Facebook Conversion Pixel',
 			'object_types'  => $post_types,
 			'context'       => 'normal',
 			'priority'      => 'high',

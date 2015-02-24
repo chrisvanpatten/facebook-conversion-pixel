@@ -109,7 +109,7 @@ class Fb_Pxl_Admin {
 
 		add_settings_section(
 		    'fb_pxl_display_on',
-		    'Disable Facebook Conversion Pixel field on these post types:',
+		    'Enable Facebook Conversion Pixel field on these post types:',
 		    '',
 		    self::$key
 		);

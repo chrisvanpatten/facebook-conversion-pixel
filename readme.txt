@@ -58,7 +58,7 @@ To verify that the pixel is working correctly, test it by navigating to the web 
 * Excluded Revision and Navigation Menu post types from the plugin options page
 
 = 1.2 =
-* Updated plugin to use new CMB2 version of Custom Metaboxes and Fields
+* Updated plugin to use new CMB2 version of Custom Metaboxes and Fields library
 
 == Screenshots ==
 1. Paste in your Facebook Conversion Pixel code and check the Insert Code checkbox to insert it.
