@@ -1,7 +1,7 @@
 <?php
 /**
  * Facebook Conversion Pixel Options
- * @version 1.2
+ * @since 1.0
  */
 class Fb_Pxl_Admin {
  
