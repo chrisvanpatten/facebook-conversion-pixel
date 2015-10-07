@@ -3,7 +3,7 @@
 Plugin Name: Facebook Conversion Pixel
 Plugin URI: https://github.com/kellenmace/facebook-conversion-pixel
 Description: Facebook's recommended plugin for adding Facebook Conversion Pixel code to WordPress sites.
-Version: 1.3.1
+Version: 1.3.2
 Author: Kellen Mace
 Author URI: http://kellenmace.com/
 License: GPLv2 or later
@@ -20,16 +20,34 @@ function fb_pxl_head() {
 
 	// If user has enabled this post type
 	if ( isset( $fb_pxl_options[ $post_type ] ) && 'on' === $fb_pxl_options[ $post_type ] ) {
-		$fb_pxl_switch = get_post_meta( get_the_id(), 'fb_pxl_checkbox', true);
+		$fb_pxl_switch = get_post_meta( get_the_id(), 'fb_pxl_checkbox', true );
 
 		// If user has chosen to insert code, insert it
 		if ( 'on' === $fb_pxl_switch ) {
-			$fb_pxl_code = get_post_meta( get_the_id(), 'fb_pxl_conversion_code', true);
-			echo htmlspecialchars_decode( $fb_pxl_code );
+			$nonce = wp_create_nonce( 'fb-pxl-nonce' );
+			fb_pxl_insert_facebook_conversion_pixel( $nonce );
 		}
 	}
 }
 add_action( 'wp_head', 'fb_pxl_head' );
+
+/**
+ * Insert Facebook Conversion Pixel
+ * @since 1.3.2.
+ */
+function fb_pxl_insert_facebook_conversion_pixel( $nonce ) {
+
+	// If this function has been called from somewhere other than fb_pxl_head(), bail.
+	if ( ! wp_verify_nonce( $nonce, 'fb-pxl-nonce' ) ) {
+		exit;
+	}
+	
+	// Output code
+	$fb_pxl_code = get_post_meta( get_the_id(), 'fb_pxl_conversion_code', true);
+	if ( ! empty( $fb_pxl_code ) ) {
+		echo htmlspecialchars_decode( $fb_pxl_code );
+	}
+}
 
 /**
  * Include plugin admin dependencies
@@ -71,15 +89,15 @@ function fb_pxl_display_meta_box() {
 	) );
 
 	$metabox->add_field( array(
-		'name' => 'Insert Code',
-		'desc' => 'Insert Facebook Conversion Pixel code on this page',
+		'name' => __( 'Insert Code', 'facebook-conversion-pixel' ),
+		'desc' => __( 'Insert Facebook Conversion Pixel code on this page', 'facebook-conversion-pixel' ),
 		'id'   => $prefix . 'checkbox',
 		'type' => 'checkbox',
 	) );
 
 	$metabox->add_field( array(
-		'name' => 'Conversion Pixel',
-		'desc' => 'Paste your Facebook Conversion Pixel code here',
+		'name' => __( 'Conversion Pixel', 'facebook-conversion-pixel' ),
+		'desc' => __( 'Paste your Facebook Conversion Pixel code here', 'facebook-conversion-pixel' ),
 		'id'   => $prefix . 'conversion_code',
 		'type' => 'textarea_code',
 	) );

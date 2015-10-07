@@ -3,8 +3,8 @@ Contributors: kellenmace
 Donate link: n/a
 Tags: facebook, conversion, pixel, facebook pixel, facebook conversion, conversion pixel, code, add, insert
 Requires at least: 3.0
-Tested up to: 4.1.1
-Stable tag: 1.3.1
+Tested up to: 4.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,7 @@ In the WordPress Admin Dashboard, begin editing the Post, Page, or other post ty
 
 = How do I show/hide the Facebook Conversion Pixel field on certain post types? =
 
-From the WordPress Admin Dashboard, go to Settings > Facebook Conversion Pixel and check the boxes to enable/disable the plugin for each of your post types, and save your settings. Only enable the post types on which you need to insert conversion pixel code, and leave the rest unchecked.
+From the WordPress Admin Dashboard, go to Settings > Facebook Conversion Pixel and check the boxes to enable/disable the plugin for each of your post types, and save your settings. Only enable the post types on which you need to insert conversion pixel code, and leave the rest unchecked. You must have a user role of Administrator to change this.
 
 = I have enabled the correct post type, but I still don't see the the Facebook Conversion Pixel field. Why? =
 
@@ -65,6 +65,11 @@ To verify that the pixel is working correctly, test it by navigating to the web 
 
 = 1.3.1 =
 * converted special HTML entities in database back to characters before output
+
+= 1.3.2 =
+* internationalized text strings for translation
+* heightened security related to when conversion pixel code is output to the page
+* made it so that only administrators can modify plugin settings
 
 == Screenshots ==
 1. Paste in your Facebook Conversion Pixel code and check the Insert Code checkbox to insert it.

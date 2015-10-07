@@ -23,7 +23,7 @@ class Fb_Pxl_Admin {
 	 */
 	public function __construct() {
 		// Set our title
-		$this->title = __( 'Facebook Conversion Pixel', 'myprefix' );
+		$this->title = __( 'Facebook Conversion Pixel', 'facebook-conversion-pixel' );
 		$this->hooks();
  	}
  
@@ -50,6 +50,11 @@ class Fb_Pxl_Admin {
 	 * @since  1.0
 	 */
 	public function update_options() {
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( 'You do not have sufficient permissions to change options.' );
+		}
+
 		$options = get_option( 'fb_pxl_options' );
 		$post_types = get_post_types();
 
@@ -90,7 +95,7 @@ class Fb_Pxl_Admin {
 		$this->admin_page_setup();
 		?>
 		<div class="wrap cmb_options_page <?php echo self::$key; ?>">
-			<h2><?php echo esc_html( get_admin_page_title() ) . ' Settings'; ?></h2>
+			<h2><?php echo esc_html( get_admin_page_title() ) . ' ' . __( 'Settings', 'facebook-conversion-pixel' ); ?></h2>
 		    <form method="post" action="options.php">
 		    	<?php settings_fields( self::$key ); ?>
 		    	<?php do_settings_sections( self::$key ); ?>
@@ -109,7 +114,7 @@ class Fb_Pxl_Admin {
 
 		add_settings_section(
 		    'fb_pxl_display_on',
-		    'Enable Facebook Conversion Pixel field on these post types:',
+		    __( 'Enable Facebook Conversion Pixel field on these post types:', 'facebook-conversion-pixel' ),
 		    '',
 		    self::$key
 		);
