@@ -34,7 +34,11 @@ class Fb_Pxl_Admin {
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_init', array( $this, 'update_options' ) );
-		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
+
+		// Only show plugin settings page for users who can manage options
+		if ( current_user_can( 'manage_options' ) ) {
+			add_action( 'admin_menu', array( $this, 'add_options_page' ) );
+		}
 	}
  
 	/**
@@ -51,8 +55,9 @@ class Fb_Pxl_Admin {
 	 */
 	public function update_options() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( 'You do not have sufficient permissions to change options.' );
+		// If this is not the plugin settings page, bail
+		if ( 'fb_pxl_options' !== $_GET['page'] ) {
+			return;
 		}
 
 		$options = get_option( 'fb_pxl_options' );
@@ -92,6 +97,17 @@ class Fb_Pxl_Admin {
 	 * @since  1.0
 	 */
 	public function admin_page_display() {
+
+		// If this is not the plugin settings page, bail
+		if ( 'fb_pxl_options' !== $_GET['page'] ) {
+			return;
+		}
+
+		// Only allow users who can manage options
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( 'You do not have sufficient permissions to change options.' );
+		}
+
 		$this->admin_page_setup();
 		?>
 		<div class="wrap cmb_options_page <?php echo self::$key; ?>">
