@@ -56,7 +56,7 @@ class Fb_Pxl_Admin {
 	public function update_options() {
 
 		// If this is not the plugin settings page, bail
-		if ( 'fb_pxl_options' !== $_GET['page'] ) {
+		if ( ! isset( $_GET['page'] ) || 'fb_pxl_options' !== $_GET['page'] ) {
 			return;
 		}
 
@@ -99,7 +99,7 @@ class Fb_Pxl_Admin {
 	public function admin_page_display() {
 
 		// If this is not the plugin settings page, bail
-		if ( 'fb_pxl_options' !== $_GET['page'] ) {
+		if ( ! isset( $_GET['page'] ) || 'fb_pxl_options' !== $_GET['page'] ) {
 			return;
 		}
 
