@@ -4,7 +4,7 @@ Donate link: n/a
 Tags: facebook, conversion, pixel, facebook pixel, facebook conversion, conversion pixel, code, add, insert
 Requires at least: 3.0
 Tested up to: 4.3.1
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,9 @@ To verify that the pixel is working correctly, test it by navigating to the web 
 * internationalized text strings for translation
 * heightened security related to when conversion pixel code is output to the page
 * made it so that only administrators can modify plugin settings
+
+= 1.3.3 =
+* fixed bug related to this plugin interfering with admin ajax requests
 
 == Screenshots ==
 1. Paste in your Facebook Conversion Pixel code and check the Insert Code checkbox to insert it.

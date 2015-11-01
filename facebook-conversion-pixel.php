@@ -3,7 +3,7 @@
 Plugin Name: Facebook Conversion Pixel
 Plugin URI: https://github.com/kellenmace/facebook-conversion-pixel
 Description: Facebook's recommended plugin for adding Facebook Conversion Pixel code to WordPress sites.
-Version: 1.3.2
+Version: 1.3.3
 Author: Kellen Mace
 Author URI: http://kellenmace.com/
 License: GPLv2 or later
